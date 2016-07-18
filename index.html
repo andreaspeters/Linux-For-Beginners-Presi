@@ -3,6 +3,9 @@ layout: default
 title: Linux for Beginners Presi
 ---
 
+{% for post in site.posts %}
 <section class="slide">
-  <h1>Willkommen oder so</h1>
+{{ post.content }}
 </section>
+{% endfor %}
+
