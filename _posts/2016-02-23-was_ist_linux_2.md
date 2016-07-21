@@ -6,6 +6,12 @@ layout: slide
 ### Wo ist Linux heute:
 
 - Weltweit laufen die meissten Server auf Linux
-  - Wieso eigentlich? Dies liegt zum einen an der Sicherheit und Stabilitaet, aber auch an der Unterstuetzung der Softwareprodukte welche auf dem Server laufen soll.
-  - Der Preis, ist bei der Minderheit der Firmen ein ausschlaggebender Punkt
-- Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert. Die Masse spielt mit Windows!
+  - Wieso eigentlich?
+    - In erster Linie liegt dies an den unterstuetzten Software Produkten
+    - An der Sicherheit und Stabilitaet
+    - Die geringen Anforderungen an Hardware
+    - Aber auch an der Moeglichkeit komplexe Systeme aufbauen zu koennen
+      - Clusterin ohne Zusatzkosten
+      - Verteilte Datenhaltung
+      - Continues Integration und Delivery, Stichwort Automatisierung       
+- Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert

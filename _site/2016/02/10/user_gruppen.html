@@ -24,6 +24,23 @@
 		<section class="slide">
 	<h2 id="user-gruppen-und-deren-rechte">User, Gruppen und deren Rechte</h2>
 
+<p>Ersteinmal ein paar Befehle:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">useradd -m -s /bin/false yoda</code></li>
+  <li><code class="highlighter-rouge">groupadd jedi</code></li>
+  <li><code class="highlighter-rouge">usermod -s /bin/bash -aG jedi yoda</code></li>
+  <li><code class="highlighter-rouge">id yoda</code></li>
+  <li><code class="highlighter-rouge">userdel -r yoda</code></li>
+</ul>
+
+<p>Bitte den User Yoda neuerstellen und sofort der Gruppe jedi und die Shell bash zuweisen.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">chown yoda: Verzeichnis</code></li>
+  <li><code class="highlighter-rouge">chmod 600 Verzeichnis</code></li>
+</ul>
+
 </section>
 
 		<!-- deck.navigation snippet -->

@@ -13,5 +13,5 @@ layout: slide
 
 ## Wie fing es an
 
-- 1983 fing Richard Stallman an ein Unix aehnliches Betriebssystem zu programmieren
-- 1991 war er immer noch nicht besonders weit gekommen. So war der wichtige Linux Kernel noch sehr rudimentaer. Daraufhin find Linus Torvald an Linux zu entwickeln welches kurze zeit spaeter die Arbeit von Richard Stallman aufnahm und integrierte.
+- 1983 fing Richard Stallman an ein Unix aehnliches Betriebssystem zu programmieren. Unix war ihm zu teuer und die geschlossene Entwicklung hat ihn gestoert.
+- 1991 war er immer noch nicht besonders weit gekommen. So war der wichtige Linux Kernel noch sehr rudimentaer. Daraufhin fing Linus Torvald (damals Student) an Linux zu entwickeln welches kurze zeit spaeter die Arbeit von Richard Stallman aufnahm und integrierte. Ein Professor von ihm hat die erste Version auf seinem FTP Server online gestellt. 

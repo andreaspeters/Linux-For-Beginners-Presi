@@ -24,6 +24,67 @@
 		<section class="slide">
 	<h2 id="die-filesystem-hierarchie">Die Filesystem Hierarchie</h2>
 
+<p>1993 kam man auf die Idee, ein Standard fuer die Linux Filesysteme aufzubauen. Hintergrund waren die auftretenden Probleme bei der Systemadministration und der Software-Entwicklung durch unterschiedliche Ablagen von Programmen und Bibliotheken. In der Realitaet weichen aber viele Distributionen leicht von dem FHS ab. Einige Mounts muesste man auch ueberdenken.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/bin</td>
+      <td>Binärdateien grundlegender Befehle</td>
+    </tr>
+    <tr>
+      <td>/boot</td>
+      <td>statische Dateien des Bootloaders</td>
+    </tr>
+    <tr>
+      <td>/dev</td>
+      <td>Gerätedateien</td>
+    </tr>
+    <tr>
+      <td>/etc</td>
+      <td>Host-spezifische Systemkonfiguration</td>
+    </tr>
+    <tr>
+      <td>/lib</td>
+      <td>grundlegende dynamische Bibliotheken und Kernel-Module</td>
+    </tr>
+    <tr>
+      <td>/mnt</td>
+      <td>temporär eingehängte Dateisysteme</td>
+    </tr>
+    <tr>
+      <td>/opt</td>
+      <td>zusätzliche Anwendungsprogramme</td>
+    </tr>
+    <tr>
+      <td>/sbin</td>
+      <td>Binärdateien grundlegender Befehle, die in der Regel nicht mit Standardrechten benutzbar sind</td>
+    </tr>
+    <tr>
+      <td>/srv</td>
+      <td>Daten für Systemdienste (häufig unbenutzt)</td>
+    </tr>
+    <tr>
+      <td>/tmp</td>
+      <td>temporäre Dateien</td>
+    </tr>
+    <tr>
+      <td>/usr</td>
+      <td>Statische Programmdateien</td>
+    </tr>
+    <tr>
+      <td>/var</td>
+      <td>veränderliche Daten</td>
+    </tr>
+  </tbody>
+</table>
+
 </section>
 
 		<!-- deck.navigation snippet -->

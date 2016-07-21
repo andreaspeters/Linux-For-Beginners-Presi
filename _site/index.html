@@ -73,8 +73,8 @@
 <h2 id="wie-fing-es-an">Wie fing es an</h2>
 
 <ul>
-  <li>1983 fing Richard Stallman an ein Unix aehnliches Betriebssystem zu programmieren</li>
-  <li>1991 war er immer noch nicht besonders weit gekommen. So war der wichtige Linux Kernel noch sehr rudimentaer. Daraufhin find Linus Torvald an Linux zu entwickeln welches kurze zeit spaeter die Arbeit von Richard Stallman aufnahm und integrierte.</li>
+  <li>1983 fing Richard Stallman an ein Unix aehnliches Betriebssystem zu programmieren. Unix war ihm zu teuer und die geschlossene Entwicklung hat ihn gestoert.</li>
+  <li>1991 war er immer noch nicht besonders weit gekommen. So war der wichtige Linux Kernel noch sehr rudimentaer. Daraufhin fing Linus Torvald (damals Student) an Linux zu entwickeln welches kurze zeit spaeter die Arbeit von Richard Stallman aufnahm und integrierte. Ein Professor von ihm hat die erste Version auf seinem FTP Server online gestellt.</li>
 </ul>
 
 </section>
@@ -109,11 +109,23 @@
 <ul>
   <li>Weltweit laufen die meissten Server auf Linux
     <ul>
-      <li>Wieso eigentlich? Dies liegt zum einen an der Sicherheit und Stabilitaet, aber auch an der Unterstuetzung der Softwareprodukte welche auf dem Server laufen soll.</li>
-      <li>Der Preis, ist bei der Minderheit der Firmen ein ausschlaggebender Punkt</li>
+      <li>Wieso eigentlich?
+        <ul>
+          <li>In erster Linie liegt dies an den unterstuetzten Software Produkten</li>
+          <li>An der Sicherheit und Stabilitaet</li>
+          <li>Die geringen Anforderungen an Hardware</li>
+          <li>Aber auch an der Moeglichkeit komplexe Systeme aufbauen zu koennen
+            <ul>
+              <li>Clusterin ohne Zusatzkosten</li>
+              <li>Verteilte Datenhaltung</li>
+              <li>Continues Integration und Delivery, Stichwort Automatisierung</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert. Die Masse spielt mit Windows!</li>
+  <li>Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert</li>
 </ul>
 
 </section>
@@ -121,15 +133,138 @@
 <section class="slide">
 <h2 id="die-shell-und-ein-paar-befehle">Die Shell und ein paar Befehle</h2>
 
+<p>Die Shell ist nicht zu vergleichen mit der Commandline von Windows. Die shell ist ein sehr maechtiges Tool in der nicht nur Programme gestartet und Dokumente verwaltet werden. Man programmiert sogar in Shell. Schauen wir uns das also im Schnelldurchlauf an.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Befehl</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ls</td>
+      <td>ls -lrta</td>
+    </tr>
+    <tr>
+      <td>cd</td>
+      <td>cd Dokumente</td>
+    </tr>
+    <tr>
+      <td>mkdir</td>
+      <td>mkdir LinuxWorkshop</td>
+    </tr>
+    <tr>
+      <td>mv</td>
+      <td>mv LinuxWorkshop Linux4Dummies</td>
+    </tr>
+    <tr>
+      <td>cp</td>
+      <td>cp -p Linux4Dummies Blub</td>
+    </tr>
+    <tr>
+      <td>top</td>
+      <td>top</td>
+    </tr>
+    <tr>
+      <td>vim</td>
+      <td>vim README.md</td>
+    </tr>
+    <tr>
+      <td>man</td>
+      <td>man top</td>
+    </tr>
+  </tbody>
+</table>
+
 </section>
 
 <section class="slide">
 <h2 id="die-filesystem-hierarchie">Die Filesystem Hierarchie</h2>
 
+<p>1993 kam man auf die Idee, ein Standard fuer die Linux Filesysteme aufzubauen. Hintergrund waren die auftretenden Probleme bei der Systemadministration und der Software-Entwicklung durch unterschiedliche Ablagen von Programmen und Bibliotheken. In der Realitaet weichen aber viele Distributionen leicht von dem FHS ab. Einige Mounts muesste man auch ueberdenken.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/bin</td>
+      <td>Binärdateien grundlegender Befehle</td>
+    </tr>
+    <tr>
+      <td>/boot</td>
+      <td>statische Dateien des Bootloaders</td>
+    </tr>
+    <tr>
+      <td>/dev</td>
+      <td>Gerätedateien</td>
+    </tr>
+    <tr>
+      <td>/etc</td>
+      <td>Host-spezifische Systemkonfiguration</td>
+    </tr>
+    <tr>
+      <td>/lib</td>
+      <td>grundlegende dynamische Bibliotheken und Kernel-Module</td>
+    </tr>
+    <tr>
+      <td>/mnt</td>
+      <td>temporär eingehängte Dateisysteme</td>
+    </tr>
+    <tr>
+      <td>/opt</td>
+      <td>zusätzliche Anwendungsprogramme</td>
+    </tr>
+    <tr>
+      <td>/sbin</td>
+      <td>Binärdateien grundlegender Befehle, die in der Regel nicht mit Standardrechten benutzbar sind</td>
+    </tr>
+    <tr>
+      <td>/srv</td>
+      <td>Daten für Systemdienste (häufig unbenutzt)</td>
+    </tr>
+    <tr>
+      <td>/tmp</td>
+      <td>temporäre Dateien</td>
+    </tr>
+    <tr>
+      <td>/usr</td>
+      <td>Statische Programmdateien</td>
+    </tr>
+    <tr>
+      <td>/var</td>
+      <td>veränderliche Daten</td>
+    </tr>
+  </tbody>
+</table>
+
 </section>
 
 <section class="slide">
 <h2 id="user-gruppen-und-deren-rechte">User, Gruppen und deren Rechte</h2>
+
+<p>Ersteinmal ein paar Befehle:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">useradd -m -s /bin/false yoda</code></li>
+  <li><code class="highlighter-rouge">groupadd jedi</code></li>
+  <li><code class="highlighter-rouge">usermod -s /bin/bash -aG jedi yoda</code></li>
+  <li><code class="highlighter-rouge">id yoda</code></li>
+  <li><code class="highlighter-rouge">userdel -r yoda</code></li>
+</ul>
+
+<p>Bitte den User Yoda neuerstellen und sofort der Gruppe jedi und die Shell bash zuweisen.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">chown yoda: Verzeichnis</code></li>
+  <li><code class="highlighter-rouge">chmod 600 Verzeichnis</code></li>
+</ul>
 
 </section>
 
