@@ -3,4 +3,4 @@ title: Willkommen
 layout: slide
 ---
 
-# Willkommen in hier
+# Linux im Schnellstart
