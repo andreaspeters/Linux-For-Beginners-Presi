@@ -9,3 +9,8 @@ layout: slide
 
 - GIT
 - Apache
+- Cryptsetup
+
+Wie wird installiert?
+
+```apt-get install <programmname>```

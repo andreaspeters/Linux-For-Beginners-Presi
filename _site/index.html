@@ -135,48 +135,16 @@
 
 <p>Die Shell ist nicht zu vergleichen mit der Commandline von Windows. Die shell ist ein sehr maechtiges Tool in der nicht nur Programme gestartet und Dokumente verwaltet werden. Man programmiert sogar in Shell. Schauen wir uns das also im Schnelldurchlauf an.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Befehl</th>
-      <th>Beispiel</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ls</td>
-      <td>ls -lrta</td>
-    </tr>
-    <tr>
-      <td>cd</td>
-      <td>cd Dokumente</td>
-    </tr>
-    <tr>
-      <td>mkdir</td>
-      <td>mkdir LinuxWorkshop</td>
-    </tr>
-    <tr>
-      <td>mv</td>
-      <td>mv LinuxWorkshop Linux4Dummies</td>
-    </tr>
-    <tr>
-      <td>cp</td>
-      <td>cp -p Linux4Dummies Blub</td>
-    </tr>
-    <tr>
-      <td>top</td>
-      <td>top</td>
-    </tr>
-    <tr>
-      <td>vim</td>
-      <td>vim README.md</td>
-    </tr>
-    <tr>
-      <td>man</td>
-      <td>man top</td>
-    </tr>
-  </tbody>
-</table>
+<ul>
+  <li><code class="highlighter-rouge">ls -lrta</code></li>
+  <li><code class="highlighter-rouge">cd</code></li>
+  <li><code class="highlighter-rouge">mkdir LinuxWorkshop</code></li>
+  <li><code class="highlighter-rouge">mv LinuxWorkshop Linux4Dummies</code></li>
+  <li><code class="highlighter-rouge">cp -p Linux4Dummies Blub</code></li>
+  <li><code class="highlighter-rouge">top</code></li>
+  <li><code class="highlighter-rouge">vim README.md</code></li>
+  <li><code class="highlighter-rouge">man top</code></li>
+</ul>
 
 </section>
 
@@ -276,12 +244,44 @@
 <ul>
   <li>GIT</li>
   <li>Apache</li>
+  <li>Cryptsetup</li>
 </ul>
+
+<p>Wie wird installiert?</p>
+
+<p><code class="highlighter-rouge">apt-get install &lt;programmname&gt;</code></p>
 
 </section>
 
 <section class="slide">
 <h2 id="anlegen-eines-verschluesselten-containers">Anlegen eines verschluesselten Containers</h2>
+
+<p>Folgende Pakete werden benötigt:</p>
+
+<p><code class="highlighter-rouge">bash
+apt-get install cryptsetup
+</code></p>
+
+<p>Passwort Datei erstellen</p>
+
+<p><code class="highlighter-rouge">bash
+sudo dd if=/dev/random bs=512 skip=1 count=4 &gt; keyFile.bin
+</code></p>
+
+<p>Container erstellen und verschluesseln</p>
+
+<ul>
+  <li><code class="highlighter-rouge">sudo dd if=/dev/random bs=1M count=100 of=containerfile.img</code></li>
+  <li><code class="highlighter-rouge">sudo cryptsetup -c aes-xts-plain64 -s 512 -h sha512 luksFormat -y containerfile.img</code></li>
+  <li><code class="highlighter-rouge">sudo cryptsetup luksOpen containerfile.img file-crypt</code></li>
+  <li><code class="highlighter-rouge">sudo cryptsetup luksAddKey /dev/mapper/file-crypt --key-file=- keyFile.bin</code></li>
+  <li><code class="highlighter-rouge">sudo mkfs.ext3 /dev/mapper/file-crypt</code></li>
+</ul>
+
+<p>Containerfile Bootfest einrichten</p>
+
+<p><code class="highlighter-rouge">sudo vim /etc/crypttab</code>
+<code class="highlighter-rouge">crypt-file containerfile.img keyFile.bin</code></p>
 
 </section>
 
