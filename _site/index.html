@@ -146,6 +146,24 @@
   <li><code class="highlighter-rouge">man top</code></li>
 </ul>
 
+<h2 id="was-ist-ein-shell-script">Was ist ein Shell Script?</h2>
+
+<p>Hier ein Beispiel:</p>
+
+<p><code class="highlighter-rouge"><span class="c">#!/bin/bash</span></code></p>
+
+<p><code class="highlighter-rouge">echo "Verzeichnis Name eingeben"</code></p>
+
+<p><code class="highlighter-rouge">read DIRNAME</code></p>
+
+<p><code class="highlighter-rouge">mkdir $DIRNAME</code></p>
+
+<p><code class="highlighter-rouge">if [ $? &lt;&gt; 0 ]; then</code></p>
+
+<p><code class="highlighter-rouge">  echo "Fehler beim anlegen";</code></p>
+
+<p><code class="highlighter-rouge">fi</code></p>
+
 </section>
 
 <section class="slide">
