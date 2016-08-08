@@ -13,4 +13,8 @@ layout: slide
 
 Wie wird installiert?
 
-```apt-get install <programmname>```
+```sudo apt-get install <programmname>```
+
+Wie sucht man nach einem Programm?
+
+```sudo apt-cache search <programmname>```

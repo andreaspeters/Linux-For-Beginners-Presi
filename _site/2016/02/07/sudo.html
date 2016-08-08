@@ -2,7 +2,7 @@
 <html>
 	  <head>
     <meta charset="utf-8">
-    <title>Anlegen eines verschluesselten Containers</title>
+    <title>Sudo</title>
     <meta name="author" content="">
     <meta name="viewport" content="width=1024, user-scalable=no">
 
@@ -22,35 +22,35 @@
 
 	<body class="deck-container">
 		<section class="slide">
-	<h2 id="anlegen-eines-verschluesselten-containers">Anlegen eines verschluesselten Containers</h2>
+	<h2 id="superuser-berechtigung-als-normaler-user">SuperUser berechtigung als normaler User</h2>
 
-<p>Folgende Pakete werden benötigt:</p>
+<p>Einige Befehle können wir als normaler User nicht ausführen. So dürfen wir weder User anlegen, noch Rechte auf Verzeichnissen ändern. Selbst das installieren von Software ist dem normalen User untersagt. Um trotzdem diese Aktionen durchzuführen, ohne gleich auf den unsicheren User root zu wechseln, gibt es den Befehl <code class="highlighter-rouge">sudo</code>.</p>
 
-<p><code class="highlighter-rouge">
-sudo apt-get install cryptsetup
-</code></p>
+<p>Anzeigen der erlaubten Sudo Befehle:</p>
 
-<p>Passwort Datei erstellen</p>
+<p><code class="highlighter-rouge">sudo -l</code></p>
 
-<p><code class="highlighter-rouge">
-sudo dd if=/dev/random bs=512 skip=1 count=4 &gt; keyFile.bin
-</code></p>
+<p><code class="highlighter-rouge">Der Benutzer andreas darf die folgenden Befehle auf andreas-notebook2 ausführen:</code></p>
 
-<p>Container erstellen und verschluesseln</p>
+<p><code class="highlighter-rouge">   (ALL) ALL</code></p>
 
-<ul>
-  <li><code class="highlighter-rouge">sudo dd if=/dev/zero bs=1M count=100 of=containerfile.img</code></li>
-  <li><code class="highlighter-rouge">sudo cryptsetup -c aes-xts-plain64 -s 512 -h sha512 luksFormat -y containerfile.img</code></li>
-  <li><code class="highlighter-rouge">sudo cryptsetup luksOpen containerfile.img file-crypt</code></li>
-  <li><code class="highlighter-rouge">sudo cryptsetup luksAddKey containerfile.img --key-file=- keyFile.bin</code></li>
-  <li><code class="highlighter-rouge">sudo mkfs.ext3 /dev/mapper/file-crypt</code></li>
-</ul>
+<p>Wie schaut die Sudo Konfigurations Datei aus?</p>
 
-<p>Containerfile Bootfest einrichten</p>
+<p><code class="highlighter-rouge">sudo vim /etc/sudoers</code></p>
+
+<p><code class="highlighter-rouge">## User privilege specification</code></p>
+
+<p><code class="highlighter-rouge">##</code></p>
+
+<p><code class="highlighter-rouge">%sudo ALL=(ALL) ALL</code></p>
+
+<p>Was bedeutet das nun?</p>
 
 <ul>
-  <li><code class="highlighter-rouge">sudo vim /etc/crypttab</code></li>
-  <li><code class="highlighter-rouge">crypt-file containerfile.img keyFile.bin</code></li>
+  <li><strong>%sudo</strong> &gt; Die Gruppe welche den Befehl ausführen darf</li>
+  <li><strong>ALL</strong> &gt; Auf welchen Zielsystem der Befehl ausgeführt werden darf</li>
+  <li><strong>(ALL)</strong> &gt; Was der Ziel User ist unter dem der Befehl ausgeführt wird</li>
+  <li><strong>ALL</strong> &gt; Der Befehl der ausgeführt werden darf</li>
 </ul>
 
 </section>

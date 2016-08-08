@@ -255,6 +255,40 @@
 </section>
 
 <section class="slide">
+<h2 id="superuser-berechtigung-als-normaler-user">SuperUser berechtigung als normaler User</h2>
+
+<p>Einige Befehle können wir als normaler User nicht ausführen. So dürfen wir weder User anlegen, noch Rechte auf Verzeichnissen ändern. Selbst das installieren von Software ist dem normalen User untersagt. Um trotzdem diese Aktionen durchzuführen, ohne gleich auf den unsicheren User root zu wechseln, gibt es den Befehl <code class="highlighter-rouge">sudo</code>.</p>
+
+<p>Anzeigen der erlaubten Sudo Befehle:</p>
+
+<p><code class="highlighter-rouge">sudo -l</code></p>
+
+<p><code class="highlighter-rouge">Der Benutzer andreas darf die folgenden Befehle auf andreas-notebook2 ausführen:</code></p>
+
+<p><code class="highlighter-rouge">   (ALL) ALL</code></p>
+
+<p>Wie schaut die Sudo Konfigurations Datei aus?</p>
+
+<p><code class="highlighter-rouge">sudo vim /etc/sudoers</code></p>
+
+<p><code class="highlighter-rouge">## User privilege specification</code></p>
+
+<p><code class="highlighter-rouge">##</code></p>
+
+<p><code class="highlighter-rouge">%sudo ALL=(ALL) ALL</code></p>
+
+<p>Was bedeutet das nun?</p>
+
+<ul>
+  <li><strong>%sudo</strong> &gt; Die Gruppe welche den Befehl ausführen darf</li>
+  <li><strong>ALL</strong> &gt; Auf welchen Zielsystem der Befehl ausgeführt werden darf</li>
+  <li><strong>(ALL)</strong> &gt; Was der Ziel User ist unter dem der Befehl ausgeführt wird</li>
+  <li><strong>ALL</strong> &gt; Der Befehl der ausgeführt werden darf</li>
+</ul>
+
+</section>
+
+<section class="slide">
 <h2 id="software-installation-unter-debian-basiertem-linux">Software Installation unter Debian basiertem Linux</h2>
 
 <h3 id="folgendes-installieren-wir">Folgendes installieren wir:</h3>
@@ -267,7 +301,11 @@
 
 <p>Wie wird installiert?</p>
 
-<p><code class="highlighter-rouge">apt-get install &lt;programmname&gt;</code></p>
+<p><code class="highlighter-rouge">sudo apt-get install &lt;programmname&gt;</code></p>
+
+<p>Wie sucht man nach einem Programm?</p>
+
+<p><code class="highlighter-rouge">sudo apt-cache search &lt;programmname&gt;</code></p>
 
 </section>
 
@@ -276,35 +314,43 @@
 
 <p>Folgende Pakete werden benötigt:</p>
 
-<p><code class="highlighter-rouge">bash
-apt-get install cryptsetup
+<p><code class="highlighter-rouge">
+sudo apt-get install cryptsetup
 </code></p>
 
 <p>Passwort Datei erstellen</p>
 
-<p><code class="highlighter-rouge">bash
+<p><code class="highlighter-rouge">
 sudo dd if=/dev/random bs=512 skip=1 count=4 &gt; keyFile.bin
 </code></p>
 
 <p>Container erstellen und verschluesseln</p>
 
 <ul>
-  <li><code class="highlighter-rouge">sudo dd if=/dev/random bs=1M count=100 of=containerfile.img</code></li>
+  <li><code class="highlighter-rouge">sudo dd if=/dev/zero bs=1M count=100 of=containerfile.img</code></li>
   <li><code class="highlighter-rouge">sudo cryptsetup -c aes-xts-plain64 -s 512 -h sha512 luksFormat -y containerfile.img</code></li>
   <li><code class="highlighter-rouge">sudo cryptsetup luksOpen containerfile.img file-crypt</code></li>
-  <li><code class="highlighter-rouge">sudo cryptsetup luksAddKey /dev/mapper/file-crypt --key-file=- keyFile.bin</code></li>
+  <li><code class="highlighter-rouge">sudo cryptsetup luksAddKey containerfile.img --key-file=- keyFile.bin</code></li>
   <li><code class="highlighter-rouge">sudo mkfs.ext3 /dev/mapper/file-crypt</code></li>
 </ul>
 
 <p>Containerfile Bootfest einrichten</p>
 
-<p><code class="highlighter-rouge">sudo vim /etc/crypttab</code>
-<code class="highlighter-rouge">crypt-file containerfile.img keyFile.bin</code></p>
+<ul>
+  <li><code class="highlighter-rouge">sudo vim /etc/crypttab</code></li>
+  <li><code class="highlighter-rouge">crypt-file containerfile.img keyFile.bin</code></li>
+</ul>
 
 </section>
 
 <section class="slide">
 <h2 id="eine-kleine-programmieraufgabe">Eine kleine Programmieraufgabe</h2>
+
+<p>Programmiert ein Shell Script, welche wie folgt aufgerufen wird:</p>
+
+<p><code class="highlighter-rouge">workshop.sh &lt;username&gt; &lt;groesse in mb&gt;</code></p>
+
+<p>Dessen aufgabe es ist, einen User anzulegen, dessen Homeverzeichnis ein Verschlüsselter Container ist.</p>
 
 </section>
 
