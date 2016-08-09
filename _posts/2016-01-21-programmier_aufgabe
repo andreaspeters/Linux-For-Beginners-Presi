@@ -1,0 +1,71 @@
+---
+title: Eine kleine Programmieraufgabe
+layout: slide
+---
+
+
+Nun erstellen wir die Seite die die Daten des Form-Elements entgegen nimmt:
+
+```sudo nano /var/www/html/xss001.php```
+
+Inhalt:
+
+```
+<?php
+
+$user = $_GET['user'];
+$post = $_GET['post'];
+
+mysql_connect("localhost","<user>","<password>");
+mysql_select_db("guestbook");
+
+// Überpruefen ob der User schon vorhanden ist
+$query1 = "SELECT user FROM entry
+WHERE user LIKE '$user'";
+$result = mysql_query($query1);
+// Fehlermeldung ausgeben, bzw. Kunden einfuegen
+$num=mysql_NumRows($result);
+if ($num)
+{
+echo "User schonmal eingetragen!";
+}
+else
+{
+$query2="INSERT INTO entry
+SET user='$user',
+post='$post'";
+
+$result2 = mysql_query($query2);
+if ($result2)
+  {
+  print"<p><b>$user</b> Beitrag wurde erfolgreich aufgenommen.</p>";
+  }
+  else
+  {
+    print"Datenbankfehler! Beitrag konnte nicht aufgenommen werden!";
+  }
+}
+header ('location: xss.php');
+?>
+
+
+Nun erstellen wir die Datenbank, die die Einträge der User speichert und dem Script bereitstellt.
+
+```mysql -u root -p```
+
+Ihr werdet aufgefordert euer Passwort einzugeben.
+
+Anschließend erstellen wir eine Datenbank:
+
+```create database guestbook;```
+
+Wechsel auf die Datenbank
+
+```use guestbook;```
+
+Erstellen der Tabelle fuer die Eintraege.
+
+```create table entry (user varchar(30) NOT NULL, post varchar(100) NOT NULL);```
+
+Nun müssen wir in den beiden Scripten den <user> und das <passwort> anpassen.
+```

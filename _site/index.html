@@ -23,7 +23,7 @@
 	<body class="deck-container">
 		
 <section class="slide">
-<h1 id="linux-im-schnellstart">Linux im Schnellstart</h1>
+<h1 id="linux-im-schnellstart-oder-so">Linux im Schnellstart, oder so!</h1>
 
 </section>
 
@@ -52,6 +52,7 @@
   <li>Die Shell</li>
   <li>Einfuehrung in die Filesystem Hierarchie</li>
   <li>User, Gruppen und deren Rechte</li>
+  <li>SuperUser Berechtigung als normaler User</li>
   <li>Software Installation unter Debian basiertem Linux</li>
   <li>Anlegen eines verschluesselten Containers</li>
   <li>Eine kleine Programmieraufgabe</li>
@@ -116,7 +117,7 @@
           <li>Die geringen Anforderungen an Hardware</li>
           <li>Aber auch an der Moeglichkeit komplexe Systeme aufbauen zu koennen
             <ul>
-              <li>Clusterin ohne Zusatzkosten</li>
+              <li>Clustering ohne Zusatzkosten</li>
               <li>Verteilte Datenhaltung</li>
               <li>Continues Integration und Delivery, Stichwort Automatisierung</li>
             </ul>
@@ -125,7 +126,6 @@
       </li>
     </ul>
   </li>
-  <li>Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert</li>
 </ul>
 
 </section>
@@ -158,7 +158,7 @@
 
 <p><code class="highlighter-rouge">mkdir $DIRNAME</code></p>
 
-<p><code class="highlighter-rouge">if [ $? &lt;&gt; 0 ]; then</code></p>
+<p><code class="highlighter-rouge">if [ $? != 0 ]; then</code></p>
 
 <p><code class="highlighter-rouge">  echo "Fehler beim anlegen";</code></p>
 

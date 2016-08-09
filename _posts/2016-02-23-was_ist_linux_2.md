@@ -11,7 +11,6 @@ layout: slide
     - An der Sicherheit und Stabilitaet
     - Die geringen Anforderungen an Hardware
     - Aber auch an der Moeglichkeit komplexe Systeme aufbauen zu koennen
-      - Clusterin ohne Zusatzkosten
+      - Clustering ohne Zusatzkosten
       - Verteilte Datenhaltung
       - Continues Integration und Delivery, Stichwort Automatisierung       
-- Im Desktop Bereich ist Linux zu meisst bei proffesionals installiert

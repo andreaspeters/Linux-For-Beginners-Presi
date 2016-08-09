@@ -1,0 +1,52 @@
+---
+title: Eine kleine Programmieraufgabe
+layout: slide
+---
+
+## Eine größere Programmieraufgabe
+
+Eine Webseite mit einem simplen Gästebuch:
+
+
+Installation eines LAMP Servers
+```sudo apt-get install apache2 libapache2-mod-php5 php5 php5-mysql mysql-server```
+
+
+Nun erstellen wir die Webseite für das Gästebuch:
+
+```sudo nano /var/www/html/xss.php```
+
+```
+Inhalt:
+
+<html>
+<head>
+<title>Gaestebuch</title>
+</head>
+<body>
+<h2>Gaestebuch</h2>
+
+<table>
+<tr>
+<th>Username</th><th>Beitrag</th>
+</tr>
+<?php
+mysql_connect("localhost","<user>","<password>");
+mysql_select_db("guestbook");
+$ergebnis = mysql_query("SELECT * FROM entry");
+while($row = mysql_fetch_object($ergebnis)) {
+echo "<tr>
+<td>$row->user</td> <td>$row->post</td>
+</tr>";
+}
+?>
+</table>
+<br>
+<form action="xss001.php" method="get">
+<input type=text name="user"></input><br>
+<input type=text name="post"></input><br>
+<input type=submit onclick="xss.php"><br>
+</form>
+</body>
+</html>
+```
